@@ -22,5 +22,5 @@ resonance.oninput = () => {
 let ringMyBell = () =>{
   gong.triggerAttack()
 }
-// let setIntervalID = setInterval(ringMyBell, 1000)
+let setIntervalID = setInterval(ringMyBell, 1000)
 console.log(gong);
