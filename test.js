@@ -52,9 +52,34 @@ let drumVol = document.getElementById("drumVol")
   console.log(drum.volume.value);
 }
 
+let pluck = new Tone.PluckSynth().toMaster();
+let pluckPitchVal = document.getElementById("pluckPitchVal")
+let pluckPitch = 160;
+pluck.volume.value = 12;
+
+pluckPitchVal.oninput = () => {
+  pluckPitch = parseFloat(pluckPitchVal.value);
+  console.log(pluckPitch);
+}
+let aN = document.getElementById("aN")
+aN.oninput = () => {
+  pluck.attackNoise = parseFloat(aN.value);
+  console.log(pluck.attackNoise);
+};
+let damp = document.getElementById("damp")
+damp.oninput = () => {
+  drum.dampening = parseFloat(damp.value);
+  console.log(drum.dampening);
+}
+let res = document.getElementById("res")
+  res.oninput = () => {
+  pluck.resonance = parseFloat(res.value);
+  console.log(pluck.resonance);
+}
 
 let ringMyBell = () =>{
   // cymbal.triggerAttack()
   // drum.triggerAttack(pitch)
+  pluck.triggerAttack(pluckPitch)
 }
 let setIntervalID = setInterval(ringMyBell, 1000)
