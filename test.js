@@ -21,15 +21,11 @@ resonance.oninput = () => {
 }
 
 let drum = new Tone.MembraneSynth().toMaster();
-let env = document.getElementById("envelope")
-env.oninput = () => {
-  drum.envelope = parseFloat(env.value);
-  console.log(drum.envelope);
-}
-let osc = document.getElementById("oscillator")
-osc.oninput = () => {
-  drum.oscillator = parseFloat(osc.value);
-  console.log(drum.oscillator);
+let pitchVal = document.getElementById("pitch")
+let pitch = 60;
+pitchVal.oninput = () => {
+  pitch = parseFloat(pitchVal.value);
+  console.log(pitch);
 }
 let oct = document.getElementById("oct")
 oct.oninput = () => {
@@ -45,6 +41,6 @@ pDecay.oninput = () => {
 
 let ringMyBell = () =>{
   // cymbal.triggerAttack()
-  drum.triggerAttack()
+  drum.triggerAttack(pitch)
 }
 let setIntervalID = setInterval(ringMyBell, 1000)
