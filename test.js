@@ -52,37 +52,38 @@ let drumVol = document.getElementById("drumVol")
   console.log(drum.volume.value);
 }
 
-let pluck = new Tone.PluckSynth().toMaster();
-let pluckPitchVal = document.getElementById("pluckPitchVal")
-let pluckPitch = 160;
-
-pluckPitchVal.oninput = () => {
-  pluckPitch = parseFloat(pluckPitchVal.value);
-  console.log(pluckPitch);
-}
-let aN = document.getElementById("aN")
-aN.oninput = () => {
-  pluck.attackNoise = parseFloat(aN.value);
-  console.log(pluck.attackNoise);
+let monoSyn = new Tone.MonoSynth().toMaster();
+let monoPitch = 100;
+let synPitch = document.getElementById("synPitch");
+synPitch.oninput = () => {
+  monoPitch = parseFloat(synPitch.value);
+  console.log(monoPitch);
 };
-let damp = document.getElementById("damp")
-damp.oninput = () => {
-  pluck.dampening.value = parseFloat(damp.value);
-  console.log(pluck.dampening.value);
-}
-let res = document.getElementById("res")
-  res.oninput = () => {
-  pluck.resonance.value = parseFloat(res.value);
-  console.log(pluck.resonance.value);
-}
-let pluckVol = document.getElementById("pluckVol")
-pluckVol.oninput = () => {
-  pluck.volume.value = parseFloat(pluckVol.value);
-}
+let attack = document.getElementById("attack");
+attack.oninput = () => {
+  monoSyn.envelope.attack = parseFloat(attack.value);
+  console.log(monoSyn.envelope.attack);
+};
+let synDecay = document.getElementById("synDecay");
+synDecay.oninput = () => {
+  monoSyn.envelope.decay = parseFloat(synDecay.value);
+  console.log(monoSyn.envelope.decay);
+};
+let sus = document.getElementById("sus");
+sus.oninput = () => {
+  monoSyn.envelope.sustain = parseFloat(sus.value);
+  console.log(monoSyn.envelope.sustain);
+};
+let rel = document.getElementById("rel");
+rel.oninput = () => {
+  monoSyn.envelope.release = parseFloat(rel.value);
+  console.log(monoSyn.envelope.release);
+};
+
 
 let ringMyBell = () =>{
   // cymbal.triggerAttack()
   // drum.triggerAttack(pitch)
-  pluck.triggerAttackRelease(120, 0.01)
+  monoSyn.triggerAttack(monoPitch)
 }
 let setIntervalID = setInterval(ringMyBell, 5000)

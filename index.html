@@ -37,16 +37,19 @@
     </label>
     <hr>
     <label>pitch
-      <input id="pluckPitchVal" type="range" step="2" value="60" min="0" max="500">
+      <input id="synPitch" type="range" step="2" value="60" min="0" max="500">
     </label>
-    <label>Attack Noise
-      <input id="aN" type="range" step="0.1" value="0.1" min="0.1" max="20">
+    <label>Attack
+      <input id="attack" type="range" step="0.001" value="0.005" min="0.001" max="0.050">
     </label>
-    <label>Dampening
-      <input id="damp" type="range" step="5" value="150" min="0" max="5000">
+    <label>Decay
+      <input id="synDecay" type="range" step="0.01" value="0.1" min="0.01" max="2.0">
     </label>
-    <label>resonance
-      <input id="res" type="range" step="0.1" value="4" min="0" max="25">
+    <label>Sustain
+      <input id="sus" type="range" step="0.1" value="0.9" min="0.1" max="3">
+    </label>
+    <label>Release
+      <input id="rel" type="range" step="0.5" value="1" min="0.5" max="5">
     </label>
     <label>Volume
       <input id="pluckVol" type="range" step="2" value="0.0" min="-12" max="12">
