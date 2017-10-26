@@ -54,6 +54,7 @@ let drumVol = document.getElementById("drumVol")
 
 let monoSyn = new Tone.MonoSynth().toMaster();
 let monoPitch = 100;
+monoSyn.oscillator.type = "sine"
 let synPitch = document.getElementById("synPitch");
 synPitch.oninput = () => {
   monoPitch = parseFloat(synPitch.value);
@@ -79,11 +80,16 @@ rel.oninput = () => {
   monoSyn.envelope.release = parseFloat(rel.value);
   console.log(monoSyn.envelope.release);
 };
+let synVol = document.getElementById("synVol");
+synVol.oninput = () => {
+  monoSyn.volume.value = parseFloat(synVol.value);
+  console.log(monoSyn.volume.value);
+}
 
 
 let ringMyBell = () =>{
   // cymbal.triggerAttack()
   // drum.triggerAttack(pitch)
-  monoSyn.triggerAttack(monoPitch)
+  monoSyn.triggerAttackRelease(monoPitch, 0.1)
 }
-let setIntervalID = setInterval(ringMyBell, 5000)
+let setIntervalID = setInterval(ringMyBell, 1000)
