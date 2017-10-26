@@ -1,13 +1,15 @@
 let cymbal = new Tone.MetalSynth().toMaster()
 let harm = document.getElementById("harmonicity")
+cymbal.frequency.value = 45;
+cymbal.volume.value = -12;
 harm.oninput = () => {
   cymbal.harmonicity = parseFloat(harm.value);
   console.log(cymbal.harmonicity);
 }
 let freq = document.getElementById("frequency")
 freq.oninput = () => {
-  cymbal.frequency = parseFloat(freq.value);
-  console.log(cymbal.frequency);
+  cymbal.frequency.value = parseFloat(freq.value);
+  console.log(cymbal.frequency.value);
 }
 let octave = document.getElementById("octaves")
 octave.oninput = () => {
@@ -19,10 +21,17 @@ resonance.oninput = () => {
   cymbal.resonance = parseFloat(resonance.value);
   console.log(cymbal.resonance);
 }
+let cymVol = document.getElementById("cymVol")
+cymVol.oninput = () => {
+  cymbal.volume.value = parseFloat(cymVol.value);
+  console.log(cymbal.volume.value);
+}
 
 let drum = new Tone.MembraneSynth().toMaster();
 let pitchVal = document.getElementById("pitch")
-let pitch = 60;
+let pitch = 160;
+drum.volume.value = 12;
+drum.octaves = 0.8;
 pitchVal.oninput = () => {
   pitch = parseFloat(pitchVal.value);
   console.log(pitch);
@@ -37,10 +46,15 @@ pDecay.oninput = () => {
   drum.pitchDecay = parseFloat(pDecay.value);
   console.log(drum.pitchDecay);
 }
+let drumVol = document.getElementById("drumVol")
+  drumVol.oninput = () => {
+  drum.volume.value = parseFloat(drumVol.value);
+  console.log(drum.volume.value);
+}
 
 
 let ringMyBell = () =>{
   // cymbal.triggerAttack()
-  drum.triggerAttack(pitch)
+  // drum.triggerAttack(pitch)
 }
 let setIntervalID = setInterval(ringMyBell, 1000)
