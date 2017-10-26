@@ -55,7 +55,6 @@ let drumVol = document.getElementById("drumVol")
 let pluck = new Tone.PluckSynth().toMaster();
 let pluckPitchVal = document.getElementById("pluckPitchVal")
 let pluckPitch = 160;
-pluck.volume.value = 12;
 
 pluckPitchVal.oninput = () => {
   pluckPitch = parseFloat(pluckPitchVal.value);
@@ -68,18 +67,22 @@ aN.oninput = () => {
 };
 let damp = document.getElementById("damp")
 damp.oninput = () => {
-  drum.dampening = parseFloat(damp.value);
-  console.log(drum.dampening);
+  pluck.dampening.value = parseFloat(damp.value);
+  console.log(pluck.dampening.value);
 }
 let res = document.getElementById("res")
   res.oninput = () => {
-  pluck.resonance = parseFloat(res.value);
-  console.log(pluck.resonance);
+  pluck.resonance.value = parseFloat(res.value);
+  console.log(pluck.resonance.value);
+}
+let pluckVol = document.getElementById("pluckVol")
+pluckVol.oninput = () => {
+  pluck.volume.value = parseFloat(pluckVol.value);
 }
 
 let ringMyBell = () =>{
   // cymbal.triggerAttack()
   // drum.triggerAttack(pitch)
-  pluck.triggerAttack(pluckPitch)
+  pluck.triggerAttackRelease(120, 0.01)
 }
-let setIntervalID = setInterval(ringMyBell, 1000)
+let setIntervalID = setInterval(ringMyBell, 5000)
