@@ -85,38 +85,85 @@ synVol.oninput = () => {
   monoSyn.volume.value = parseFloat(synVol.value);
   console.log(monoSyn.volume.value);
 }
-let gong = new Tone.PolySynth ( [ polyphony = 3], [voice = Tone.MonoSynth]);
+let gong = new Tone.PolySynth (3, Tone.MonoSynth);
 gong.voices[0] =  {
-                    frequency : C4 ,
-                    detune : 0 ,
-                    oscillator : {
-                    type : square
-                    }
-                    ,
-                    filter : {
-                    Q : 6 ,
-                    type : lowpass ,
-                    rolloff : -24
-                    }
-                    ,
-                    envelope : {
-                    attack : 0.005 ,
-                    decay : 0.1 ,
-                    sustain : 0.9 ,
-                    release : 1
-                    }
-                    ,
-                    filterEnvelope : {
-                    attack : 0.06 ,
-                    decay : 0.2 ,
-                    sustain : 0.5 ,
-                    release : 2 ,
-                    baseFrequency : 200 ,
-                    octaves : 7 ,
-                    exponent : 2
+                    frequency: 200,
+                    detune: 0,
+                    oscillator: {type: "sine"},
+                    filter: {
+                      Q: 6,
+                      type: "lowpass",
+                      rolloff: -24
+                    },
+                    envelope: {
+                      attack: 0.005,
+                      decay: 0.1,
+                      sustain: 0.9,
+                      release: 1
+                    },
+                    filterEnvelope: {
+                      attack: 0.06,
+                      decay: 0.2,
+                      sustain: 0.5,
+                      release: 2,
+                      baseFrequency: 200,
+                      octaves: 7,
+                      exponent: 2
                     }
                   }
-console.log(gong);
+gong.voices[1] =  {
+                    frequency: 200,
+                    detune: 0,
+                    oscillator: {type: "saw"},
+                    filter: {
+                      Q: 6,
+                      type: "lowpass",
+                      rolloff: -24
+                    },
+                    envelope: {
+                      attack: 0.005,
+                      decay: 0.1,
+                      sustain: 0.9,
+                      release: 1
+                    },
+                    filterEnvelope: {
+                      attack: 0.06,
+                      decay: 0.2,
+                      sustain: 0.5,
+                      release: 2,
+                      baseFrequency: 200,
+                      octaves: 7,
+                      exponent: 2
+                    }
+                  }
+gong.voices[2] =  {
+                    frequency: 200,
+                    detune: 0,
+                    oscillator: {type: "sine"},
+                    filter: {
+                      Q: 6,
+                      type: "lowpass",
+                      rolloff: -24
+                    },
+                    envelope: {
+                      attack: 0.005,
+                      decay: 0.1,
+                      sustain: 0.9,
+                      release: 1
+                    },
+                    filterEnvelope: {
+                      attack: 0.06,
+                      decay: 0.2,
+                      sustain: 0.5,
+                      release: 2,
+                      baseFrequency: 200,
+                      octaves: 7,
+                      exponent: 2
+                    }
+                  }
+console.log(gong.voices[0]);
+console.log(gong.voices[1]);
+console.log(gong.voices[2]);
 
 
 
@@ -124,5 +171,6 @@ let ringMyBell = () =>{
   // cymbal.triggerAttack()
   // drum.triggerAttack(pitch)
   // monoSyn.triggerAttackRelease(monoPitch, 0.1)
+  gong.triggerAttackRelease(200, 0.1)
 }
 let setIntervalID = setInterval(ringMyBell, 1000)
