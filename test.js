@@ -88,7 +88,7 @@ synVol.oninput = () => {
 
 
 let gong = new Tone.PolySynth(3, Tone.MonoSynth).toMaster();
-let gongPitchSet = [380, 300, 280]
+let gongPitchSet = [220, 280, 300]
 gong.set({
   "frequency": 200,
   "detune": 0,
@@ -109,7 +109,7 @@ gong.set({
     "decay": 2,
     "sustain": 3,
     "release": 5,
-    "baseFrequency": 200,
+    "baseFrequency": 500,
     "octaves": 3,
     "exponent": 1
   }
