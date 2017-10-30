@@ -1,10 +1,15 @@
 let droneSolid = new Tone.FMSynth();
+droneSolid.oscillator.type = "sine"
+droneSolid.modulation.type = "square"
+droneSolid.volume.value = -6;
 droneSolid.toMaster();
+console.log(droneSolid.oscillator);
 let droneModLFO = new Tone.LFO();
 droneModLFO.connect(droneSolid.modulationIndex)
 droneModLFO.min = 0.1;
-droneModLFO.max = 200;
-droneModLFO.frequency.value = 0.1;
+droneModLFO.max = 100;
+droneModLFO.frequency.value = 0.12;
+droneModLFO.set()
 droneModLFO.start();
 let vol = document.getElementById('vol')
 vol.oninput = () => {
@@ -25,6 +30,6 @@ lfoFreq.oninput = () => {
 
 
 let ringMyBell = () => {
-  droneSolid.triggerAttack(150)
+  droneSolid.triggerAttack(60)
 }
 let setIntervalID = setInterval(ringMyBell, 1000);
