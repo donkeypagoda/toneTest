@@ -2,9 +2,10 @@ let droneSolid = new Tone.FMSynth();
 droneSolid.toMaster();
 let droneModLFO = new Tone.LFO();
 droneModLFO.connect(droneSolid.modulationIndex)
-droneModLFO.min = 1;
-droneModLFO.max = 3;
-droneModLFO.frequency = 10;
+droneModLFO.min = 0.1;
+droneModLFO.max = 200;
+droneModLFO.frequency.value = 0.1;
+droneModLFO.start();
 let vol = document.getElementById('vol')
 vol.oninput = () => {
   console.log(vol.value);
