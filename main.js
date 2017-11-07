@@ -50,24 +50,7 @@ let numbSides = 5;
 //   }
 // }
 // makeArrs(numbSides);
-// var osc = new Tone.Oscillator(250);
-// // console.log(osc.volume);
-// osc.start();
-// var env = new Tone.AmplitudeEnvelope(0.09, 0.04, 0.09, 0);
-// env.connect(osc.evenvelope)
-// env.toMaster();
-// osc.connect(env);
-// console.log(osc);
-// env.toMaster();
-// osc.start();
-// env.connect(osc.output.volume.value)
-// env.triggerAttack()
-// let osc = new Tone.Oscillator(250)
-// let env = new Tone.AmplitudeEnvelope(0.09, 0.04, 0.09, 0.00001);
-//
-// env.connect(osc.output.gain)
-// osc.connect(env).start();;
-// env.toMaster();
+
 let synth = new Tone.Synth
 synth.oscillator.type = "sine"
 synth.envelope.attack = 0.09;
@@ -158,7 +141,6 @@ lfo6.start()
 
 function ringMyBell(){
 synth.triggerAttackRelease(225, 0.04) // root
-//ditch the other waves
 synth2.triggerAttackRelease((225 * (16/9)), 0.02) // m7 up
 synth3.triggerAttackRelease((225 * (9/8)), 0.1) // m3 up
 synth4.triggerAttackRelease(117, 0.04)  // oct down
@@ -166,8 +148,7 @@ synth5.triggerAttackRelease(337, 0.03) // fifth up
 synth6.triggerAttackRelease(450, 0.01) // oct up
 synth7.triggerAttackRelease(58, 0.012) // two octs down
 synth8.triggerAttackRelease(506, 0.004) // m3 above high octave
-// env.triggerAttack("+0", 0.09);
-// osc.stop;
+
   // for (let i = 0; i < oscArr1.length; i++){
   //   envArr1[i].triggerAttack("+0", 0.08);
   // }
