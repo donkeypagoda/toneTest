@@ -81,7 +81,7 @@ synth4.oscillator.type = "sine"
 synth4.envelope.attack = 0.09;
 synth4.envelope.decay = 0.1;
 synth4.envelope.sustain = 0.4;
-synth4.envelope.release = 15;
+synth4.envelope.release = 20;
 synth4.toMaster();
 
 let synth5 = new Tone.Synth
@@ -105,7 +105,7 @@ synth7.oscillator.type = "sine"
 synth7.envelope.attack = 0.09;
 synth7.envelope.decay = 0.1;
 synth7.envelope.sustain = 0.1;
-synth7.envelope.release = 16;
+synth7.envelope.release = 22;
 synth7.toMaster();
 
 let synth8 = new Tone.Synth
@@ -116,38 +116,29 @@ synth8.envelope.sustain = 0.1;
 synth8.envelope.release = 35;
 synth8.toMaster();
 
-let lfo1 = new Tone.LFO(3, -4, 4)
-let lfo2 = new Tone.LFO(5, -5, 5)
-let lfo3 = new Tone.LFO(5.5, -10, 10)
-let lfo4 = new Tone.LFO(3, -4, 4)
-let lfo5 = new Tone.LFO(3, -4, 4)
-let lfo6 = new Tone.LFO(3, -4, 4)
-let lfo7 = new Tone.LFO(3, -4, 4)
-lfo1.connect(synth.oscillator.detune)
-// lfo2.connect(synth2.oscillator.detune)
-// lfo3.connect(synth3.oscillator.detune)
-lfo4.connect(synth4.oscillator.detune)
-lfo5.connect(synth5.oscillator.detune)
-lfo6.connect(synth6.oscillator.detune)
-// lfo7.connect(synth7.oscillator.detune)
-lfo1.start()
-lfo2.start()
-lfo3.start()
-lfo4.start()
-lfo5.start()
-lfo6.start()
-// lfo7.start()
+//lfo shimmy
+let lfo1 = new Tone.LFO(5, -4, 4)
 
+lfo1.fan(synth.oscillator.detune,
+        synth2.oscillator.detune,
+        synth3.oscillator.detune,
+        synth4.oscillator.detune,
+        synth5.oscillator.detune,
+        synth6.oscillator.detune,
+        synth7.oscillator.detune,
+        synth8.oscillator.detune)
+
+lfo1.start()
 
 function ringMyBell(){
 synth.triggerAttackRelease(225, 0.04) // root
 synth2.triggerAttackRelease((225 * (16/9)), 0.02) // m7 up
 synth3.triggerAttackRelease((225 * (9/8)), 0.1) // m3 up
-synth4.triggerAttackRelease(117, 0.04)  // oct down
-synth5.triggerAttackRelease(337, 0.03) // fifth up
-synth6.triggerAttackRelease(450, 0.01) // oct up
-synth7.triggerAttackRelease(58, 0.012) // two octs down
-synth8.triggerAttackRelease(506, 0.004) // m3 above high octave
+synth4.triggerAttackRelease((225 / 2), 0.04)  // oct down
+synth5.triggerAttackRelease(225 * (3/2), 0.03) // fifth up
+synth6.triggerAttackRelease(225 * 2, 0.01) // oct up
+synth7.triggerAttackRelease(225 * (18/8), 0.004) // 9th
+synth8.triggerAttackRelease(450 * (9/8), 0.004) // m3 above high octave
 
   // for (let i = 0; i < oscArr1.length; i++){
   //   envArr1[i].triggerAttack("+0", 0.08);
