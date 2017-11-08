@@ -1,10 +1,6 @@
 let baseFreq = 250;
 
 // freq ratios for scales, might replace this with arrpeggios
-const majPent = [1, 9/8, 5/4, 3/2, 5/3]
-const minPent = [1, 6/5, 4/3, 3/2, 16/9]
-const ionian = [1, 9/8, 5/4, 4/3, 3/2, 5/3, 15/8]
-const aeolian = [1, 9/8, 9/8, 4/3, 3/2, 8/5, 16/9]
 const allTwelve = [1, 16/15, 9/8, 6/5, 5/4, 4/3, 45/32, 3/2, 8/5, 5/3, 16/9, 15/8]
 
 let scaleChoice = minPent;
@@ -58,7 +54,6 @@ synth.envelope.decay = 0.1;
 synth.envelope.sustain = 0.1;
 synth.envelope.release = 3;
 synth.toMaster();
-
 
 let synth2 = new Tone.Synth
 synth2.oscillator.type = "sine"
@@ -126,19 +121,21 @@ lfo1.fan(synth.oscillator.detune,
         synth5.oscillator.detune,
         synth6.oscillator.detune,
         synth7.oscillator.detune,
-        synth8.oscillator.detune)
+        synth8.oscillator.detune
+      )
 
 lfo1.start()
 
 function ringMyBell(){
-synth.triggerAttackRelease(225, 0.04) // root
-synth2.triggerAttackRelease((225 * (16/9)), 0.02) // m7 up
-synth3.triggerAttackRelease((225 * (9/8)), 0.1) // m3 up
-synth4.triggerAttackRelease((225 / 2), 0.04)  // oct down
-synth5.triggerAttackRelease(225 * (3/2), 0.03) // fifth up
-synth6.triggerAttackRelease(225 * 2, 0.01) // oct up
-synth7.triggerAttackRelease(225 * (18/8), 0.004) // 9th
-synth8.triggerAttackRelease(450 * (9/8), 0.004) // m3 above high octave
+synth.triggerAttackRelease(baseFreq, 0.04) // root
+synth2.triggerAttackRelease((baseFreq * allTwelve[10]), 0.02) // m7 up
+synth3.triggerAttackRelease((baseFreq * (9/8)), 0.1) // m3 up
+synth4.triggerAttackRelease((baseFreq / 2), 0.04)  // oct down
+synth5.triggerAttackRelease(baseFreq * (3/2), 0.03) // fifth up
+synth6.triggerAttackRelease(baseFreq * 2, 0.01) // oct up
+synth7.triggerAttackRelease(baseFreq * (18/8), 0.004) // 9th
+synth8.triggerAttackRelease(baseFreq * 2 * (9/8), 0.004) // m3 above high octave
+
 
   // for (let i = 0; i < oscArr1.length; i++){
   //   envArr1[i].triggerAttack("+0", 0.08);
